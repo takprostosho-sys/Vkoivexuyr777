@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Активація Коду</title>
+    <style>
+        :root {
+            --primary: #24A1DE;
+            --bg: #f3f4f6;
+            --text: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text); }
+        p { color: #6b7280; font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.85rem; color: #4b5563; }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus { border-color: var(--primary); }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover { background: #1e87bb; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🔑</div>
+    <h1>Активація</h1>
+    <p>Введіть ваш секретний код нижче, щоб надіслати його менеджеру</p>
+
+    <div class="input-group">
+        <label for="userCode">Ваш код</label>
+        <input type="text" id="userCode" placeholder="Наприклад: 777-XYZ">
+    </div>
+
+    <button class="btn" onclick="sendToTelegram()">
+        🚀 Активувати код
+    </button>
+</div>
+
+<script>
+    function sendToTelegram() {
+        // 1. Вкажіть тут ваш нікнейм у Telegram (БЕЗ символу @)
+        const telegramUsername = "UA_jgdeyGd8"; 
+        
+        // 2. Отримуємо код, який ввів користувач
+        const code = document.getElementById('userCode').value.trim();
+
+        if (code === "") {
+            alert("Будь ласка, спочатку введіть код!");
+            return;
+        }
+
+        
+ // Створюємо пряме посилання на діалог
+    const telegramUrl = "https://t.me/" + telegramUsername;
+
+    // Відкриваємо Telegram у новому вікні
+    window.open(telegramUrl, '_blank');
+    }
+</script>
+
+</body>
+</html>
